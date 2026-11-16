@@ -2,7 +2,7 @@
 
 A Hindi-first workflow tool for the revenue officers who process **income certificate** (आय प्रमाण पत्र) applications in a Uttar Pradesh tehsil: the **Lekhpal**, who checks documents and verifies on the ground, and the **Tehsildar**, who decides. AI helps at every step, and the officer always makes the final call.
 
-- **Live demo:** _add link after deploying_
+- **Live demo:** https://kenpath-assignment.vercel.app
 - **Demo logins:** Lekhpal `lekhpal` / `Lekhpal@2026` · Tehsildar `tehsildar` / `Tehsildar@2026` (the login page also has one-tap demo buttons)
 - **Language:** Hindi by default, with an English toggle in the header
 

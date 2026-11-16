@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // libsql ships a native binary for local SQLite files; keep it out of the bundle
+  serverExternalPackages: ["@libsql/client", "libsql"],
   turbopack: {
     rules: {
       "*.css": {

@@ -176,7 +176,16 @@ Other scripts: `npm run build && npm start` (production), `npm run lint`, `npm r
 
 ## 7. Deployment
 
-`render.yaml` deploys this as a Node web service on Render (set `ANTHROPIC_API_KEY` in the dashboard). With the default file database, data resets to the demo seed whenever the instance restarts, which suits a review demo. For persistent data, set `DATABASE_URL`/`DATABASE_AUTH_TOKEN` to a Turso database. Any Node host works (`npm run build && npm start`).
+Deployed on **Vercel**:
+
+1. On vercel.com, choose **Add New → Project** and import this GitHub repo. The Next.js preset needs no build settings.
+2. Under **Environment Variables**, add `ANTHROPIC_API_KEY` and `SESSION_SECRET` (a long random string).
+3. **Database:**
+   - **Persistent (recommended):** add **Turso** from the Vercel Marketplace (Storage → Turso), or create a free Turso database, then set `DATABASE_URL` (`libsql://…`) and `DATABASE_AUTH_TOKEN`. Tables and demo data are created on the first request.
+   - **Zero setup:** without `DATABASE_URL`, the app uses SQLite in `/tmp`. This works for a quick look, but each server instance has its own copy that resets to the demo seed, so changes can seem to disappear.
+4. Deploy. Every push to `main` redeploys.
+
+Any other Node host also works with `npm run build && npm start`.
 
 ## 8. Limitations and next steps
 

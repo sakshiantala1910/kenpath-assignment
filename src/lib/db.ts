@@ -39,7 +39,9 @@ let client: Client | null = null;
 let ready: Promise<void> | null = null;
 
 function connect(): Client {
-  const url = process.env.DATABASE_URL ?? "file:./data/app.db";
+  // Vercel's filesystem is read-only except /tmp, which is per instance and resets to the seed
+  const fallback = process.env.VERCEL ? "file:/tmp/app.db" : "file:./data/app.db";
+  const url = process.env.DATABASE_URL ?? fallback;
   if (url.startsWith("file:")) {
     mkdirSync(path.dirname(url.slice("file:".length)), { recursive: true });
   }
